@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"go-todo-api/internal/todo"
+	"go-todo-api/swagger/routeJson"
 
 	"github.com/go-chi/chi/v5"
 )
@@ -23,13 +24,10 @@ func SetupRoutes(r *chi.Mux) {
 		r.Delete("/{id}", todo.DeleteTodoHandler)
 	})
 
-
 	// Serve swagger.json
-	r.Get("/swagger.json", func(w http.ResponseWriter, r *http.Request) {
-		http.ServeFile(w, r, "swagger.json")
-	})
+	r.Get("/swagger.json", routeJson.SwaggerJSONHandler)
 
 	// Serve Swagger UI
-	fs := http.FileServer(http.Dir("./swagger-ui"))
+	fs := http.FileServer(http.Dir("./swagger/swagger-ui"))
 	r.Handle("/docs/*", http.StripPrefix("/docs", fs))
 }

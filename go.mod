@@ -8,6 +8,7 @@ require (
 	github.com/common-nighthawk/go-figure v0.0.0-20210622060536-734e95fb86be
 	github.com/fatih/color v1.18.0
 	github.com/go-chi/cors v1.2.2
+	github.com/joho/godotenv v1.5.1
 )
 
 require (
